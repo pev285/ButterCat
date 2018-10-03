@@ -3,90 +3,65 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButterflyScript : MonoBehaviour {
-
-    private Transform slotToDockTo;
-
-    public enum AnimationType
+namespace ButterCat
+{
+    public class ButterflyScript : MonoBehaviour
     {
-        FLY,
-        IDLE,
-    }
 
-    [Serializable]
-    public struct AnimationPair
-    {
-        public AnimationType type;
-        public AnimationClip clip;
-    }
+        private Transform slotToDockTo;
 
-    [SerializeField]
-    List<AnimationPair> animationsList;
-    Dictionary<AnimationType, AnimationClip> animationsDict;
+        ButterflyAnimationController animationController;
 
-    Animation animationComponent;
-
-    [SerializeField]
-    private bool isFlying = false;
-    public bool IsFlying
-    {
-        get
+        [SerializeField]
+        private bool isFlying = false;
+        public bool IsFlying
         {
-            return isFlying;
-        }
-        set
-        {
-            if (isFlying == value)
+            get
             {
-                return;
+                return isFlying;
             }
+            set
+            {
+                if (isFlying == value)
+                {
+                    return;
+                }
 
-            isFlying = value;
+                isFlying = value;
+
+                UpdateAnimation();
+            } // set //
+        } // IsFlying ///
+
+        private void UpdateAnimation()
+        {
+            if (animationController == null)
+            {
+                animationController = GetComponent<ButterflyAnimationController>();
+            }
+            animationController.UpdateAnimation(isFlying);
+        }
+
+        private void Start()
+        {
             UpdateAnimation();
         }
-    }
 
 
-    void UpdateAnimation()
-    {
-        if (isFlying)
+        public void SetSlotToDockTo(Transform tr)
         {
-            animationComponent.Play(animationsDict[AnimationType.FLY].name);
-        }
-        else
-        {
-            animationComponent.Play(animationsDict[AnimationType.IDLE].name);
-        }
-    } // UpdateAnimation() ///
-
-
-    private void Start()
-    {
-        animationsDict = new Dictionary<AnimationType, AnimationClip>();
-        animationComponent = GetComponent<Animation>();
-
-        for (int i = 0; i < animationsList.Count; i++)
-        {
-            animationComponent.AddClip(animationsList[i].clip, animationsList[i].clip.name);
-            animationsDict[animationsList[i].type] = animationsList[i].clip;
+            slotToDockTo = tr;
         }
 
-        UpdateAnimation();
-    }
-
-
-    public void SetSlotToDockTo(Transform tr)
-    {
-        slotToDockTo = tr;
-    }
-
-    private void Update()
-    {
-        if (slotToDockTo != null)
+        private void Update()
         {
-            transform.position = slotToDockTo.position;
-            transform.rotation = slotToDockTo.rotation;
-        }
-    } // Update() ///
+            if (slotToDockTo != null)
+            {
+                transform.position = slotToDockTo.position;
+                transform.rotation = slotToDockTo.rotation;
+            }
+        } // Update() ///
 
+    } // end of class ///
 }
+

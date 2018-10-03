@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4438816252861932}
   - component: {fileID: 114676677697001030}
   - component: {fileID: 111019164587451924}
+  - component: {fileID: 114813714903073126}
   m_Layer: 0
   m_Name: Butterfly
   m_TagString: Untagged
@@ -1865,9 +1866,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a289bfc8cb26b4a8a6011c4995249c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFlying: 0
+--- !u!114 &114813714903073126
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1147702943086654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd5496b9b8315c645b4a798a2849ecda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   animationsList:
   - type: 1
     clip: {fileID: 7400000, guid: c0f0c6a996227bc449389322230b758e, type: 2}
   - type: 0
     clip: {fileID: 7400000, guid: 559729f0dcc7e58429ee60483a8df593, type: 2}
-  isFlying: 1

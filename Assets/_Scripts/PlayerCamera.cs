@@ -2,18 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCamera : MonoBehaviour {
-
-    Transform playerTransform;
-
-
-    public void PositionCamera()
+namespace ButterCat
+{
+    public class PlayerCamera : MonoBehaviour
     {
 
-    }
+        Transform playerTransform;
 
-    void Update ()
-    {
-		
-	}
-}
+
+        public void PositionCamera()
+        {
+
+        }
+
+        void Update()
+        {
+
+        }
+
+    } // end of class ///
+} // end of namespace ///
+
