@@ -22,6 +22,8 @@ public class PlayerManager : MonoBehaviour {
     List<TypePrefabPair> characterPrefabs;
 
 
+    public AnimationClip aaa;
+
     Dictionary<CharacterType, Transform> characters;
 
     private void Start()

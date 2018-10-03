@@ -36,8 +36,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4438816252861932}
-  - component: {fileID: 111471008142429330}
   - component: {fileID: 114676677697001030}
+  - component: {fileID: 111019164587451924}
   m_Layer: 0
   m_Name: Butterfly
   m_TagString: Untagged
@@ -1840,7 +1840,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1798512192790226}
   m_Mesh: {fileID: 4300012, guid: bf1b95fba89fb2e438e098ef4361e389, type: 3}
---- !u!111 &111471008142429330
+--- !u!111 &111019164587451924
 Animation:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1848,13 +1848,10 @@ Animation:
   m_GameObject: {fileID: 1147702943086654}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: c0f0c6a996227bc449389322230b758e, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: bf1b95fba89fb2e438e098ef4361e389, type: 3}
-  - {fileID: 7400000, guid: 559729f0dcc7e58429ee60483a8df593, type: 2}
-  - {fileID: 7400000, guid: c0f0c6a996227bc449389322230b758e, type: 2}
+  m_Animation: {fileID: 0}
+  m_Animations: []
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!114 &114676677697001030
@@ -1868,3 +1865,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a289bfc8cb26b4a8a6011c4995249c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationsList:
+  - type: 1
+    clip: {fileID: 7400000, guid: c0f0c6a996227bc449389322230b758e, type: 2}
+  - type: 0
+    clip: {fileID: 7400000, guid: 559729f0dcc7e58429ee60483a8df593, type: 2}
+  isFlying: 1
