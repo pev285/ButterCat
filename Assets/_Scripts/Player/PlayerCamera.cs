@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ButterCat
+namespace ButterCat.Player
+
 {
     public class PlayerCamera : MonoBehaviour
     {
 
-        Transform playerTransform;
 
 
         public void PositionCamera()
@@ -15,10 +15,6 @@ namespace ButterCat
 
         }
 
-        void Update()
-        {
-
-        }
 
     } // end of class ///
 } // end of namespace ///
