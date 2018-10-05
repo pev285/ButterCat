@@ -37,7 +37,9 @@ namespace ButterCat.Player.Butterfly
             }
             if (animationComponent == null)
             {
-                animationComponent = GetComponent<Animation>();
+                Debug.Log("number of animation components = " + GetComponentsInChildren<Animation>().Length);
+                animationComponent = GetComponentInChildren<Animation>();
+                //animationComponent = GetComponent<Animation>();
             }
 
 

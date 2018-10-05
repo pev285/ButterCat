@@ -31,9 +31,15 @@ namespace ButterCat.Player.Butterfly
                 float up = InputSource.FlyUpAxis;
 
                 Vector3 shift = (RB.transform.forward * forward + Vector3.up * up) * Time.deltaTime * movementSpeed;
+                if (shift != Vector3.zero)
+                {
+                    RB.MovePosition(RB.position + shift);
+                }
 
-                RB.MovePosition(RB.position + shift);
-                RB.MoveRotation(RB.rotation * Quaternion.Euler(0, 0, Time.deltaTime * turn * rotationSpeed));
+                if (turn != 0)
+                {
+                    RB.MoveRotation(RB.rotation * Quaternion.Euler(0, Time.deltaTime * turn * rotationSpeed, 0));
+                }
             }
 
         } // Update() ///
