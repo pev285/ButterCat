@@ -67,7 +67,7 @@ namespace ButterCat.Player
 
         private void ProcessInput()
         {
-            if (InputSource.FlyEvent)
+            if (InputSource.FlyStartStopEvent)
             {
                 if (butterfly.IsFlying)
                 {

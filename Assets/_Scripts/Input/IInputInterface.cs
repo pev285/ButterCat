@@ -8,10 +8,13 @@ namespace ButterCat.InputControls
 
 	public interface IInputInterface
 	{
-        bool FlyEvent { get; }
+        bool FlyStartStopEvent { get; }
+
+        // Presume all axes return values in [-1, 1]
 
         float FlyForwardAxis { get; }
         float FlyTurnAxis { get; }
+        float FlyUpAxis { get; }
 
         float MoveForwardAxis { get; }
         float TurnAxis { get; }

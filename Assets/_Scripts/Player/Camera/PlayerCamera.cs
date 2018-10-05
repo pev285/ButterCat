@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ButterCat.Player
+namespace ButterCat.Player.Camera
 
 {
     public class PlayerCamera : MonoBehaviour

@@ -4,12 +4,14 @@ using UnityEngine;
 
 namespace ButterCat.InputControls
 {
+
     public class PCInput : IInputInterface
     {
+        private const string FLY_UP_KEY = "FlyUpAxis";
 
-        private const string FlyAxisKey = "FlyAxis";
+        #region flying
 
-        public bool FlyEvent
+        public bool FlyStartStopEvent
         {
             get
             {
@@ -25,7 +27,7 @@ namespace ButterCat.InputControls
         {
             get
             {
-                throw new System.NotImplementedException();
+                return Input.GetAxis("Vertical");
             }
         }
 
@@ -33,9 +35,22 @@ namespace ButterCat.InputControls
         {
             get
             {
-                throw new System.NotImplementedException();
+                return Input.GetAxis("Horizontal");
             }
         }
+
+        public float FlyUpAxis
+        {
+            get
+            {
+                return Input.GetAxis(FLY_UP_KEY);
+            }
+        }
+
+        #endregion
+
+
+        #region Walking
 
         public float MoveForwardAxis
         {
@@ -53,6 +68,11 @@ namespace ButterCat.InputControls
             }
         }
 
+
+        #endregion
+
+        #region CameraControl
+
         public float ViewUpAxis
         {
             get
@@ -69,8 +89,7 @@ namespace ButterCat.InputControls
             }
         }
 
-
-
+        #endregion
 
     } // end of class //
 

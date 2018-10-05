@@ -10,8 +10,35 @@ namespace ButterCat.Player.Butterfly
 	public class ButterflyController : CustomBehaviour
 	{
 
-		
-		
-	} // end of class //
+        [SerializeField]
+        float movementSpeed = 5f;
+        [SerializeField]
+        float rotationSpeed = 180f;
+
+        private Rigidbody RB = null;
+
+        public void Init(Rigidbody rb)
+        {
+            this.RB = rb;
+        }
+
+        private void Update()
+        {
+            if (RB != null)
+            {
+                float forward = InputSource.FlyForwardAxis;
+                float turn = InputSource.FlyTurnAxis;
+                float up = InputSource.FlyUpAxis;
+
+                Vector3 shift = (RB.transform.forward * forward + Vector3.up * up) * Time.deltaTime * movementSpeed;
+
+                RB.MovePosition(RB.position + shift);
+                RB.MoveRotation(RB.rotation * Quaternion.Euler(0, 0, Time.deltaTime * turn * rotationSpeed));
+            }
+
+        } // Update() ///
+
+
+    } // end of class //
 
 } // end of namespace //

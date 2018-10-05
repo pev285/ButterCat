@@ -282,6 +282,8 @@ GameObject:
   - component: {fileID: 114438580587380670}
   - component: {fileID: 114113865060634122}
   - component: {fileID: 114715561588903840}
+  - component: {fileID: 114086131909886398}
+  - component: {fileID: 114548776852453574}
   m_Layer: 0
   m_Name: Cat Lite
   m_TagString: Untagged
@@ -1414,6 +1416,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114086131909886398
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1381841066440550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7fe096c1ee9e994c870f8474aca76ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114113865060634122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1435,6 +1448,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0d93fe669ae8da478225e6d8e617f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114548776852453574
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1381841066440550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bc589eb88c67d64c882e4d5589b61eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114715561588903840

@@ -7,11 +7,24 @@ using UnityEngine;
 namespace ButterCat.Player.Butterfly
 {
     [RequireComponent(typeof(ButterflyAnimationController), typeof(DockableBehaviour), typeof(ButterflyController))]
-    [RequireComponent(typeof(HoldingPointComponent))]
-    public class ButterflyScript : MonoBehaviour, IDockable
+    [RequireComponent(typeof(HoldingPointComponent), typeof(DockingPointComponent), typeof(Rigidbody))]
+    public class ButterflyScript : MonoBehaviour, IDockable, IDockStation
     {
 
         #region OtherComponents
+
+        Rigidbody rb = null;
+        protected Rigidbody RB
+        {
+            get
+            {
+                if (rb == null)
+                {
+                    rb = GetComponent<Rigidbody>();
+                }
+                return rb;
+            }
+        }
 
         ButterflyAnimationController animationController;
         protected ButterflyAnimationController AnimationController
@@ -47,23 +60,45 @@ namespace ButterCat.Player.Butterfly
                 if (controllerComponent == null)
                 {
                     controllerComponent = GetComponent<ButterflyController>();
+                    controllerComponent.Init(RB);
                 }
                 return controllerComponent;
             }
         }
 
-        HoldingPointComponent holdingPoint = null;
-        HoldingPointComponent HoldingPoint
+        HoldingPointComponent holdingPointComponent = null;
+        HoldingPointComponent HoldingPointComponent
         {
             get
             {
-                if (holdingPoint == null)
+                if (holdingPointComponent == null)
                 {
-                    holdingPoint = GetComponent<HoldingPointComponent>();
+                    holdingPointComponent = GetComponent<HoldingPointComponent>();
                 }
-                return holdingPoint;
+                return holdingPointComponent;
             }
         }
+
+        DockingPointComponent dockingPointComponent = null;
+        DockingPointComponent DockingPointComponent
+        {
+            get
+            {
+                if (dockingPointComponent == null)
+                {
+                    dockingPointComponent = GetComponent<DockingPointComponent>();
+                }
+                return dockingPointComponent;
+            }
+        }
+        public Transform DockingPoint // IDockingStation //
+        {
+            get
+            {
+                return DockingPointComponent.DockingPoint;
+            }
+        }
+
         #endregion
 
 
@@ -89,6 +124,7 @@ namespace ButterCat.Player.Butterfly
                 UpdateFlyingState();
             } // set //
         } // IsFlying ///
+
 
         private void UpdateFlyingState()
         {

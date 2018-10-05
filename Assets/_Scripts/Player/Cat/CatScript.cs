@@ -7,6 +7,7 @@ namespace ButterCat.Player.Cat
 {
 
     [RequireComponent(typeof(DockingPointComponent), typeof(HoldingPointComponent))]
+    [RequireComponent(typeof(CatController), typeof(CatAnimationController))]
     [RequireComponent(typeof(Rigidbody), typeof(Animator))]
     public class CatScript : MonoBehaviour, IDockStation
     {
@@ -69,6 +70,33 @@ namespace ButterCat.Player.Cat
                     holdingPointComponent = GetComponent<HoldingPointComponent>();
                 }
                 return holdingPointComponent;
+            }
+        }
+
+
+        private CatController controller = null;
+        protected CatController Controller
+        {
+            get
+            {
+                if (controller == null)
+                {
+                    controller = GetComponent<CatController>();
+                }
+                return controller;
+            }
+        }
+
+        private CatAnimationController animationController = null;
+        protected CatAnimationController AnimationController
+        {
+            get
+            {
+                if (animationController == null)
+                {
+                    animationController = GetComponent<CatAnimationController>();
+                }
+                return animationController;
             }
         }
 
