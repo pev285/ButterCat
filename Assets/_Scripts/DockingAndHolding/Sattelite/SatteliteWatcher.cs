@@ -10,11 +10,16 @@ namespace ButterCat.DockingAndHolding
 
         // Indicates position of the rotation centre ///
         Transform pivotTransform;
-        public Transform PivotTransform
+        protected Transform PivotTransform
         {
             set
             {
                 pivotTransform = value;
+                ReinitValues();
+            }
+            get
+            {
+                return pivotTransform;
             }
         }
 
@@ -27,7 +32,7 @@ namespace ButterCat.DockingAndHolding
             {
                 if (satteliteTransform == null)
                 {
-                    temporaryGO = new GameObject();
+                    temporaryGO = new GameObject("SatteliteTransform");
                     satteliteTransform = temporaryGO.transform;
                 }
                 return satteliteTransform;
@@ -39,6 +44,7 @@ namespace ButterCat.DockingAndHolding
                     Destroy(temporaryGO);
                 }
                 satteliteTransform = value;
+                ReinitValues();
             }
         }
 
@@ -81,20 +87,20 @@ namespace ButterCat.DockingAndHolding
 
         public void SetPivotTransform(Transform tr)
         {
-            pivotTransform = tr;
-            ReinitValues();
+            PivotTransform = tr;
         }
 
-        public void SetDefaultRelativePosition(Vector3 position)
+        public void SetDefaultRelativePosition(Vector3 relativePosition)
         {
-            SatteliteTransform.position = position;
+            defaultRelativePosition = relativePosition;
+            SatteliteTransform.position = PivotTransform.position + relativePosition;
+
             ReinitValues();
         }
 
         public void SetSatteliteTransform(Transform tr)
         {
             SatteliteTransform = tr;
-            ReinitValues();
         }
 
         #endregion
@@ -107,7 +113,7 @@ namespace ButterCat.DockingAndHolding
 
         private void ReinitValues()
         {
-            defaultRelativePosition = pivotTransform.position - SatteliteTransform.position;
+            defaultRelativePosition = SatteliteTransform.position - PivotTransform.position;
             distance = defaultRelativePosition.magnitude;
         }
 
@@ -121,17 +127,26 @@ namespace ButterCat.DockingAndHolding
 
         private void UpdatePosition()
         {
-
+            SatteliteTransform.position = PivotTransform.position + defaultRelativePosition;
         }
 
         private void UpdateRotation()
         {
-            SatteliteTransform.rotation.SetLookRotation(pivotTransform.position - SatteliteTransform.position);
+            //Debug.Log("satPos = " + SattelitePosition + ", pivPos = " + PivotTransform.position);
+            Vector3 forward = PivotTransform.position - SattelitePosition;
+            Vector3 right = Vector3.Cross( Vector3.up, forward);
+            Vector3 up = Vector3.Cross(forward, right);
+            Debug.DrawLine(SattelitePosition, SattelitePosition + forward, Color.blue);
+            Debug.DrawLine(SattelitePosition, SattelitePosition + right, Color.red);
+            Debug.DrawLine(SattelitePosition, SattelitePosition + up, Color.green);
+
+
+            SatteliteTransform.rotation = Quaternion.LookRotation(PivotTransform.position - SattelitePosition, up);
         }
 
         public void ReturnToDefaultPosition()
         {
-            SatteliteTransform.position = pivotTransform.position + defaultRelativePosition;
+            SatteliteTransform.position = PivotTransform.position + defaultRelativePosition;
             UpdateRotation();
         }
     }

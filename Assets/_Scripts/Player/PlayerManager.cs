@@ -54,7 +54,7 @@ namespace ButterCat.Player
             butterfly = characters[CharacterType.BUTTERFLY].GetComponent<ButterflyScript>();
             cat = characters[CharacterType.CAT].GetComponent<CatScript>();
             butterfly.SetSlotToDockTo(cat.DockingPoint, DockingHardness.HARD);
-            camera = GetComponent<PlayerCamera>();
+            camera = playerCameraTransform.GetComponent<PlayerCamera>();
 
 
             GoToCatMode();

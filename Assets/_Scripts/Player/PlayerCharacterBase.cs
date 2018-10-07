@@ -58,7 +58,7 @@ namespace ButterCat.Player
         {
             get
             {
-                return satteliteHolder.TransformToLookAt;
+                return SatteliteHolder.TransformToLookAt;
             }
         }
 
@@ -66,7 +66,7 @@ namespace ButterCat.Player
         {
             get
             {
-                return satteliteHolder.SatteliteDefaultRelativePosition;
+                return SatteliteHolder.SatteliteDefaultRelativePosition;
             }
         }
 

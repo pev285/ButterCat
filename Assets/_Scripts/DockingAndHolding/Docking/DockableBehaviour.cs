@@ -15,7 +15,7 @@ namespace ButterCat.DockingAndHolding
 	{
 
         private Vector3 currentSmoothMovementVelocity = Vector3.zero;
-        private float sooothMovementTime = 1f;
+        private float sooothMovementTime = 0.3f;
         private float smoothRotationSpeed = 90;
 
         private Transform slotToDockTo;

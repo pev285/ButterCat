@@ -59,7 +59,7 @@ namespace ButterCat.Player.Camera
         {
             get
             {
-                return satteliteWatcher.Forward;
+                return SatteliteWatcher.Forward;
             }
         }
 
@@ -67,7 +67,7 @@ namespace ButterCat.Player.Camera
         {
             get
             {
-                return satteliteWatcher.SattelitePosition;
+                return SatteliteWatcher.SattelitePosition;
             }
         }
 
@@ -75,20 +75,20 @@ namespace ButterCat.Player.Camera
         {
             get
             {
-                return satteliteWatcher.SatteliteRotation;
+                return SatteliteWatcher.SatteliteRotation;
             }
         }
 
 
         public void SetPivotTransform(Transform tr)
         {
-            satteliteWatcher.SetPivotTransform(tr);
+            SatteliteWatcher.SetPivotTransform(tr);
             SetSlotToDockTo();
         }
 
         public void SetDefaultRelativePosition(Vector3 position)
         {
-            satteliteWatcher.SetDefaultRelativePosition(position);
+            SatteliteWatcher.SetDefaultRelativePosition(position);
             SetSlotToDockTo();
         }
 
@@ -99,14 +99,14 @@ namespace ButterCat.Player.Camera
 
         public void ReturnToDefaultPosition()
         {
-            satteliteWatcher.ReturnToDefaultPosition();
+            SatteliteWatcher.ReturnToDefaultPosition();
         }
 
         #endregion
 
         public void SetSlotToDockTo()
         {
-            DockableBehaviour.SetSlotToDockTo(satteliteWatcher.SatteliteTransform, DockingHardness.SMOOTH);
+            DockableBehaviour.SetSlotToDockTo(SatteliteWatcher.SatteliteTransform, DockingHardness.SMOOTH);
         }
 
     } // end of class ///
