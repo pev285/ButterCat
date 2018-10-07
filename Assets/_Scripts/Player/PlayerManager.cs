@@ -2,6 +2,7 @@
 using ButterCat.DockingAndHolding;
 using ButterCat.InputControls;
 using ButterCat.Player.Butterfly;
+using ButterCat.Player.Camera;
 using ButterCat.Player.Cat;
 using System;
 using System.Collections;
@@ -30,12 +31,13 @@ namespace ButterCat.Player
         [SerializeField]
         List<TypePrefabPair> characterPrefabs;
         [SerializeField]
-        Transform playerCamera;
+        Transform playerCameraTransform;
 
 
         Dictionary<CharacterType, Transform> characters;
         ButterflyScript butterfly;
         CatScript cat;
+        new PlayerCamera camera;
 
         private void Start()
         {
@@ -52,7 +54,7 @@ namespace ButterCat.Player
             butterfly = characters[CharacterType.BUTTERFLY].GetComponent<ButterflyScript>();
             cat = characters[CharacterType.CAT].GetComponent<CatScript>();
             butterfly.SetSlotToDockTo(cat.DockingPoint, DockingHardness.HARD);
-
+            camera = GetComponent<PlayerCamera>();
 
 
             GoToCatMode();
@@ -69,7 +71,7 @@ namespace ButterCat.Player
         {
             if (InputSource.FlyStartStopEvent)
             {
-                if (butterfly.IsFlying)
+                if (butterfly.IsActing)
                 {
                     GoToCatMode();
                 }
@@ -83,12 +85,20 @@ namespace ButterCat.Player
 
         private void GoToCatMode()
         {
-            butterfly.IsFlying = false;
+            butterfly.IsActing = false;
+            cat.IsActing = true;
+
+            camera.SetPivotTransform(cat.TransformToLookAt);
+            camera.SetDefaultRelativePosition(cat.SatteliteDefaultRelativePosition);
         }
 
         private void GoToButterflyMode()
         {
-            butterfly.IsFlying = true;
+            butterfly.IsActing = true;
+            cat.IsActing = false;
+
+            camera.SetPivotTransform(butterfly.TransformToLookAt);
+            camera.SetDefaultRelativePosition(butterfly.SatteliteDefaultRelativePosition);
         }
 
 

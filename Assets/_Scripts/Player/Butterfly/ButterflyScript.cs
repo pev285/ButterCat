@@ -7,24 +7,14 @@ using UnityEngine;
 namespace ButterCat.Player.Butterfly
 {
     [RequireComponent(typeof(ButterflyAnimationController), typeof(DockableBehaviour), typeof(ButterflyController))]
-    [RequireComponent(typeof(HoldingPointComponent), typeof(DockingPointComponent), typeof(Rigidbody))]
-    public class ButterflyScript : MonoBehaviour, IDockable, IDockStation
+    [RequireComponent(typeof(HoldingPointComponent), typeof(Rigidbody))]
+    [RequireComponent(typeof(SatteliteHolder))]
+    public class ButterflyScript : PlayerCharacterBase, IDockable /*, IDockStation*/
     {
 
-        #region OtherComponents
+        #region RequiredComponents
 
-        Rigidbody rb = null;
-        protected Rigidbody RB
-        {
-            get
-            {
-                if (rb == null)
-                {
-                    rb = GetComponent<Rigidbody>();
-                }
-                return rb;
-            }
-        }
+
 
         ButterflyAnimationController animationController;
         protected ButterflyAnimationController AnimationController
@@ -66,19 +56,9 @@ namespace ButterCat.Player.Butterfly
             }
         }
 
-        HoldingPointComponent holdingPointComponent = null;
-        HoldingPointComponent HoldingPointComponent
-        {
-            get
-            {
-                if (holdingPointComponent == null)
-                {
-                    holdingPointComponent = GetComponent<HoldingPointComponent>();
-                }
-                return holdingPointComponent;
-            }
-        }
 
+
+        /*
         DockingPointComponent dockingPointComponent = null;
         DockingPointComponent DockingPointComponent
         {
@@ -98,35 +78,19 @@ namespace ButterCat.Player.Butterfly
                 return DockingPointComponent.DockingPoint;
             }
         }
+*/
+
+
 
         #endregion
 
 
         private Transform slotToDockTo = null;
 
-        [SerializeField]
-        private bool isFlying = false;
-        public bool IsFlying
-        {
-            get
-            {
-                return isFlying;
-            }
-            set
-            {
-                //if (isFlying == value)
-                //{
-                //    return;
-                //}
-
-                isFlying = value;
-
-                UpdateFlyingState();
-            } // set //
-        } // IsFlying ///
 
 
-        private void UpdateFlyingState()
+
+        protected override void UpdateActingState()
         {
             UpdateAnimationState();
             UpdateDockingState();
@@ -135,12 +99,12 @@ namespace ButterCat.Player.Butterfly
 
         private void UpdateControllerState()
         {
-            ControllerComponent.enabled = IsFlying;
+            ControllerComponent.enabled = IsActing;
         }
 
         private void UpdateDockingState()
         {
-            if (isFlying)
+            if (IsActing)
             {
                 DocableComponent.SetSlotToDockTo(null);
             }
@@ -152,7 +116,7 @@ namespace ButterCat.Player.Butterfly
 
         private void UpdateAnimationState()
         {
-            AnimationController.UpdateAnimation(isFlying);
+            AnimationController.UpdateAnimation(IsActing);
         }
 
 

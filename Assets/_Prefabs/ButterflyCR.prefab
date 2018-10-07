@@ -145,6 +145,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1271808310810564
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4225075202087158}
+  m_Layer: 0
+  m_Name: __SattelitePosition__
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1273384063233494
 GameObject:
   m_ObjectHideFlags: 1
@@ -237,13 +252,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4873162108453248}
   - component: {fileID: 54027557732281638}
-  - component: {fileID: 114468353927582244}
   - component: {fileID: 114648204232735488}
   - component: {fileID: 114516221060090812}
   - component: {fileID: 114720435980337358}
   - component: {fileID: 114019076054402764}
   - component: {fileID: 114008826754809950}
   - component: {fileID: 136540830311175140}
+  - component: {fileID: 114124158727587456}
   m_Layer: 0
   m_Name: ButterflyCR
   m_TagString: Untagged
@@ -331,6 +346,21 @@ GameObject:
   - component: {fileID: 23095593418249562}
   m_Layer: 0
   m_Name: haar_01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1615312854458856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4441398020528318}
+  m_Layer: 0
+  m_Name: __SattelitePivot__
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -593,6 +623,19 @@ Transform:
   m_Father: {fileID: 4574286580746030}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4225075202087158
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1271808310810564}
+  m_LocalRotation: {x: 0.06956047, y: -0, z: -0, w: 0.9975778}
+  m_LocalPosition: {x: 0, y: 3.47, z: -5.67}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4873162108453248}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4277754354347880
 Transform:
   m_ObjectHideFlags: 1
@@ -646,6 +689,19 @@ Transform:
   m_Father: {fileID: 4200870897140776}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4441398020528318
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1615312854458856}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.07, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4873162108453248}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4442490926916172
 Transform:
   m_ObjectHideFlags: 1
@@ -687,7 +743,7 @@ Transform:
   - {fileID: 4559461892725516}
   - {fileID: 4111702727094382}
   m_Father: {fileID: 4873162108453248}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: -90.133}
 --- !u!4 &4511665054887506
 Transform:
@@ -895,6 +951,8 @@ Transform:
   m_LocalPosition: {x: 163.86768, y: 11.381, z: 66.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4225075202087158}
+  - {fileID: 4441398020528318}
   - {fileID: 4476112989509368}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1915,10 +1973,10 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!111 &111362639847808088
 Animation:
@@ -1945,7 +2003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a289bfc8cb26b4a8a6011c4995249c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFlying: 0
+  isActing: 0
 --- !u!114 &114019076054402764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1962,7 +2020,7 @@ MonoBehaviour:
     clip: {fileID: 7400000, guid: c0f0c6a996227bc449389322230b758e, type: 2}
   - type: 0
     clip: {fileID: 7400000, guid: 559729f0dcc7e58429ee60483a8df593, type: 2}
---- !u!114 &114468353927582244
+--- !u!114 &114124158727587456
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1970,10 +2028,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1403897734961006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b5e7cc63a51c0846a5077a191cfc528, type: 3}
+  m_Script: {fileID: 11500000, guid: de2d4e345700d2f4796f57e8ca00ee80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dockingPoint: {fileID: 0}
+  transformToLookAt: {fileID: 4441398020528318}
+  satteliteDefaultTransform: {fileID: 4225075202087158}
 --- !u!114 &114516221060090812
 MonoBehaviour:
   m_ObjectHideFlags: 1

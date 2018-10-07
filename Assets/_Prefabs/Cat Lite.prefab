@@ -101,6 +101,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1106286903243106
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4739586787427736}
+  m_Layer: 0
+  m_Name: __SattelitePosition__
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1122791393965656
 GameObject:
   m_ObjectHideFlags: 1
@@ -284,6 +299,7 @@ GameObject:
   - component: {fileID: 114715561588903840}
   - component: {fileID: 114086131909886398}
   - component: {fileID: 114548776852453574}
+  - component: {fileID: 114799932358434534}
   m_Layer: 0
   m_Name: Cat Lite
   m_TagString: Untagged
@@ -586,6 +602,21 @@ GameObject:
   - component: {fileID: 4538652313637210}
   m_Layer: 0
   m_Name: Tummy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1793353865951926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4663621375095326}
+  m_Layer: 0
+  m_Name: __SattelitePivot__
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1053,6 +1084,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4002135426539216}
+  - {fileID: 4739586787427736}
+  - {fileID: 4663621375095326}
   - {fileID: 4961121985693738}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1160,6 +1193,19 @@ Transform:
   m_Father: {fileID: 4578559574632990}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4663621375095326
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1793353865951926}
+  m_LocalRotation: {x: 0.019324986, y: -0.00024803347, z: 0.00089494674, w: -0.99981284}
+  m_LocalPosition: {x: 0, y: 5, z: 1}
+  m_LocalScale: {x: 67.38704, y: 67.38708, z: 67.38704}
+  m_Children: []
+  m_Father: {fileID: 4459631974191772}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4666946353626272
 Transform:
   m_ObjectHideFlags: 1
@@ -1225,6 +1271,19 @@ Transform:
   m_Children:
   - {fileID: 4820134939963838}
   m_Father: {fileID: 4817513986672548}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4739586787427736
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1106286903243106}
+  m_LocalRotation: {x: 0.06956047, y: -0, z: -0, w: 0.9975778}
+  m_LocalPosition: {x: 0, y: 8, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4459631974191772}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4757944172586072
@@ -1353,7 +1412,7 @@ Transform:
   m_Children:
   - {fileID: 4578559574632990}
   m_Father: {fileID: 4459631974191772}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4979891388606648
 Transform:
@@ -1450,6 +1509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0d93fe669ae8da478225e6d8e617f13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActing: 0
 --- !u!114 &114548776852453574
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1473,6 +1533,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdingPoint: {fileID: 4672130879542370}
+--- !u!114 &114799932358434534
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1381841066440550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de2d4e345700d2f4796f57e8ca00ee80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transformToLookAt: {fileID: 4663621375095326}
+  satteliteDefaultTransform: {fileID: 4739586787427736}
 --- !u!136 &136122991910765234
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1485,7 +1558,7 @@ CapsuleCollider:
   m_Radius: 0.37505114
   m_Height: 2
   m_Direction: 2
-  m_Center: {x: -0.4, y: 0.36505154, z: 0.15786754}
+  m_Center: {x: -0.5, y: 0.36505154, z: 0.15786754}
 --- !u!136 &136366944777219704
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1498,7 +1571,7 @@ CapsuleCollider:
   m_Radius: 0.37505114
   m_Height: 2
   m_Direction: 2
-  m_Center: {x: 0.4, y: 0.36505154, z: 0.15786754}
+  m_Center: {x: 0.5, y: 0.36505154, z: 0.15786754}
 --- !u!137 &137514923332557514
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

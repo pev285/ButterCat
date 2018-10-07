@@ -7,25 +7,14 @@ namespace ButterCat.Player.Cat
 {
 
     [RequireComponent(typeof(DockingPointComponent), typeof(HoldingPointComponent))]
-    [RequireComponent(typeof(CatController), typeof(CatAnimationController))]
+    [RequireComponent(typeof(CatController), typeof(CatAnimationController), typeof(SatteliteHolder))]
     [RequireComponent(typeof(Rigidbody), typeof(Animator))]
-    public class CatScript : MonoBehaviour, IDockStation
+    public class CatScript : PlayerCharacterBase, IDockStation
     {
 
         #region RequiredComponents
 
-        private Rigidbody rb = null;
-        protected Rigidbody RB
-        {
-            get
-            {
-                if (rb == null)
-                {
-                    rb = GetComponent<Rigidbody>();
-                }
-                return rb;
-            }
-        }
+
 
         private Animator animator = null;
         protected Animator Animator
@@ -60,19 +49,6 @@ namespace ButterCat.Player.Cat
             }
         }
 
-        private HoldingPointComponent holdingPointComponent = null;
-        protected HoldingPointComponent HoldingPointComponent
-        {
-            get
-            {
-                if (holdingPointComponent == null)
-                {
-                    holdingPointComponent = GetComponent<HoldingPointComponent>();
-                }
-                return holdingPointComponent;
-            }
-        }
-
 
         private CatController controller = null;
         protected CatController Controller
@@ -100,9 +76,19 @@ namespace ButterCat.Player.Cat
             }
         }
 
+
+
+
         #endregion
 
+        
 
+
+
+        protected override void UpdateActingState()
+        {
+
+        }
 
 
     } // End of class ///
